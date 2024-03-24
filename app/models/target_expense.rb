@@ -1,0 +1,2 @@
+class TargetExpense < ApplicationRecord
+end
