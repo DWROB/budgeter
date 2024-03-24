@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_24_112751) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_24_121100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "balances", force: :cascade do |t|
-    t.decimal "total"
     t.bigint "incomes_id"
     t.bigint "expenses_id"
     t.bigint "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount"
     t.index ["expenses_id"], name: "index_balances_on_expenses_id"
     t.index ["incomes_id"], name: "index_balances_on_incomes_id"
     t.index ["users_id"], name: "index_balances_on_users_id"
@@ -35,12 +35,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_24_112751) do
 
   create_table "expenses", force: :cascade do |t|
     t.string "supplier"
-    t.decimal "amount"
     t.boolean "flg_deleted", default: false
     t.bigint "users_id"
     t.bigint "expense_types_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount"
     t.index ["expense_types_id"], name: "index_expenses_on_expense_types_id"
     t.index ["users_id"], name: "index_expenses_on_users_id"
   end
@@ -53,13 +53,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_24_112751) do
   end
 
   create_table "incomes", force: :cascade do |t|
-    t.decimal "amount"
     t.string "source"
     t.boolean "flg_deleted", default: false
     t.bigint "users_id"
     t.bigint "income_types_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount"
     t.index ["income_types_id"], name: "index_incomes_on_income_types_id"
     t.index ["users_id"], name: "index_incomes_on_users_id"
   end
