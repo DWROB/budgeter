@@ -45,7 +45,8 @@ Expense.destroy_all
     Expense.create(
         supplier: Faker::Company.name,
         expense_types_id: ExpenseType.all.sample.id,
-        amount: Faker::Number.decimal(l_digits: 2)
+        amount: Faker::Number.decimal(l_digits: 2),
+        users_id: user.id
     )
 end
 
@@ -72,7 +73,8 @@ Income.destroy_all
     Income.create(
         source: Faker::Bank.name,
         income_types_id: IncomeType.all.sample.id,
-        amount: Faker::Number.decimal(l_digits: 2)
+        amount: Faker::Number.decimal(l_digits: 2),
+        users_id: user.id
     )
 end
 
